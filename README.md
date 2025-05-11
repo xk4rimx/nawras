@@ -1,6 +1,6 @@
-# Gargash AI Hackathon Prototype
+# Nawras: We Guide, You Thrive.
 
-This is a prototype project developed for the Gargash AI Hackathon. It is built using Next.js and Tailwind CSS, and includes various components and views to demonstrate AI-driven solutions.
+Nawras is an AI-powered platform designed to transform customer engagement across Automotive, Finance, and Real Estate sectors. By unifying Gargash's diverse offerings, Nawras simplifies complex decisions, empowers users to achieve their goals, and drives cross-divisional growth for Gargash.
 
 ## Features
 
