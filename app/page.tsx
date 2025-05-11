@@ -1,7 +1,6 @@
 "use client";
 
 import AIAssistant from "@/components/ai-assistant";
-import EcosystemCard from "@/components/ecosystem-card";
 import InsightCard from "@/components/insight-card";
 import RecommendationCard from "@/components/recommendation-card";
 import {
@@ -24,6 +23,7 @@ import {
     mockRecommendations,
 } from "@/lib/mock-data";
 import {
+    ArrowRight,
     Bell,
     Home,
     Info,
@@ -50,7 +50,7 @@ export default function Dashboard() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setAiSuggestion(
-                "Would you like me to help you find a suitable apartment in Dubai Marina?"
+                "Based on your goal to own, a Deem loan could get you into an Al Barsha apartment—rates are currently attractive."
             );
             setShowSuggestion(true);
         }, 3000);
@@ -125,7 +125,7 @@ export default function Dashboard() {
                     Welcome, Karim!
                 </h2>
                 <p className="text-sm opacity-90 mt-1">
-                    Your AI-powered UAE journey begins here
+                    We guide, you thrive.
                 </p>
                 <Badge className="mt-2 bg-[#AF8039] text-white">
                     Exclusive Member
@@ -217,7 +217,7 @@ export default function Dashboard() {
                             setShowAIAssistant(true)
                         }
                     >
-                        Continue with AI Assistant
+                        Ask the Assistant
                     </Button>
                 </section>
 
@@ -270,53 +270,216 @@ export default function Dashboard() {
                     </div>
                 </section>
 
-                {/* Gargash Ecosystem */}
+                {/* Financial Overview */}
                 <section className="px-4 py-3">
-                    <h2 className="text-base font-semibold text-[#AF8039] mb-3">
-                        Gargash Ecosystem
-                    </h2>
-                    <div className="grid grid-cols-2 gap-3">
-                        <EcosystemCard
-                            title="Banking"
-                            description="Financial Services"
-                            icon="banking"
+                    <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center">
+                            <h2 className="text-base font-semibold text-gray-900">
+                                Financial Overview
+                            </h2>
+                            <Badge className="ml-2 bg-[#AF8039] text-white hover:bg-[#AF8039]/90">
+                                Personalized
+                            </Badge>
+                        </div>
+                        <button
+                            className="text-sm text-[#AF8039] font-medium"
                             onClick={() =>
                                 handleNavigation(
-                                    "Banking Services"
+                                    "Financial Details"
                                 )
                             }
-                            className="border-[#AF8039]"
-                        />
-                        <EcosystemCard
-                            title="Real Estate"
-                            description="Find Your Home"
-                            icon="realestate"
-                            onClick={() =>
-                                handleNavigation(
-                                    "Real Estate"
-                                )
-                            }
-                            className="border-[#AF8039]"
-                        />
-                        <EcosystemCard
-                            title="Automotive"
-                            description="Cars & Mobility"
-                            icon="automotive"
-                            onClick={() =>
-                                handleNavigation(
-                                    "Automotive"
-                                )
-                            }
-                        />
-                        <EcosystemCard
-                            title="My Rewards"
-                            description="Points & Benefits"
-                            icon="rewards"
-                            onClick={() =>
-                                handleNavigation("Rewards")
-                            }
-                        />
+                        >
+                            See Details
+                        </button>
                     </div>
+
+                    <Card className="bg-white border-purple-100 overflow-hidden">
+                        <CardContent className="p-4">
+                            <div className="flex items-center justify-between mb-4">
+                                <div>
+                                    <p className="text-sm text-gray-500">
+                                        Monthly Income
+                                    </p>
+                                    <h3 className="text-2xl font-bold text-gray-900">
+                                        AED 28,500
+                                    </h3>
+                                </div>
+                                <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+                                    <Wallet className="h-5 w-5 text-purple-700" />
+                                </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                {/* Expense Item - Mortgage */}
+                                <div>
+                                    <div className="flex items-center justify-between mb-1">
+                                        <div className="flex items-center">
+                                            <div className="h-6 w-6 rounded-full bg-[#AF8039]/10 flex items-center justify-center mr-2">
+                                                <Home className="h-3 w-3 text-[#AF8039]" />
+                                            </div>
+                                            <span className="text-sm font-medium">
+                                                Mortgage
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <span className="text-sm font-semibold">
+                                                AED 8,200
+                                            </span>
+                                            <span className="text-xs text-gray-500 ml-1">
+                                                /month
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <Progress
+                                        value={29}
+                                        className="h-1.5 bg-gray-100"
+                                        indicatorClassName="bg-[#AF8039]"
+                                    />
+                                    <p className="text-xs text-gray-500 mt-1">
+                                        29% of income
+                                    </p>
+                                </div>
+
+                                {/* Expense Item - Car Loan */}
+                                <div>
+                                    <div className="flex items-center justify-between mb-1">
+                                        <div className="flex items-center">
+                                            <div className="h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-2">
+                                                <img
+                                                    src="/car-icon.svg"
+                                                    alt="Car"
+                                                    className="h-3 w-3"
+                                                    onError={(
+                                                        e
+                                                    ) => {
+                                                        e.currentTarget.src =
+                                                            "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='#AF8039' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2'/%3E%3Ccircle cx='7' cy='17' r='2'/%3E%3Cpath d='M9 17h6'/%3E%3Ccircle cx='17' cy='17' r='2'/%3E%3C/svg%3E";
+                                                    }}
+                                                />
+                                            </div>
+                                            <span className="text-sm font-medium">
+                                                Car Loan
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <span className="text-sm font-semibold">
+                                                AED 2,500
+                                            </span>
+                                            <span className="text-xs text-gray-500 ml-1">
+                                                /month
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <Progress
+                                        value={9}
+                                        className="h-1.5 bg-gray-100"
+                                        indicatorClassName="bg-purple-600"
+                                    />
+                                    <p className="text-xs text-gray-500 mt-1">
+                                        9% of income
+                                    </p>
+                                </div>
+
+                                {/* Expense Item - Living Expenses */}
+                                <div>
+                                    <div className="flex items-center justify-between mb-1">
+                                        <div className="flex items-center">
+                                            <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-2">
+                                                <img
+                                                    src="/shopping-bag.svg"
+                                                    alt="Shopping"
+                                                    className="h-3 w-3"
+                                                    onError={(
+                                                        e
+                                                    ) => {
+                                                        e.currentTarget.src =
+                                                            "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='#AF8039' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z'/%3E%3Cline x1='3' y1='6' x2='21' y2='6'/%3E%3Cpath d='M16 10a4 4 0 0 1-8 0'/%3E%3C/svg%3E";
+                                                    }}
+                                                />
+                                            </div>
+                                            <span className="text-sm font-medium">
+                                                Living
+                                                Expenses
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <span className="text-sm font-semibold">
+                                                AED 7,800
+                                            </span>
+                                            <span className="text-xs text-gray-500 ml-1">
+                                                /month
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <Progress
+                                        value={27}
+                                        className="h-1.5 bg-gray-100"
+                                        indicatorClassName="bg-blue-500"
+                                    />
+                                    <p className="text-xs text-gray-500 mt-1">
+                                        27% of income
+                                    </p>
+                                </div>
+
+                                {/* Expense Item - Savings */}
+                                <div>
+                                    <div className="flex items-center justify-between mb-1">
+                                        <div className="flex items-center">
+                                            <div className="h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                                <img
+                                                    src="/piggy-bank.svg"
+                                                    alt="Savings"
+                                                    className="h-3 w-3"
+                                                    onError={(
+                                                        e
+                                                    ) => {
+                                                        e.currentTarget.src =
+                                                            "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='#AF8039' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z'/%3E%3Cpath d='M2 9v1c0 1.1.9 2 2 2h1'/%3E%3Cpath d='M16 11h0'/%3E%3C/svg%3E";
+                                                    }}
+                                                />
+                                            </div>
+                                            <span className="text-sm font-medium">
+                                                Savings
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <span className="text-sm font-semibold">
+                                                AED 10,000
+                                            </span>
+                                            <span className="text-xs text-gray-500 ml-1">
+                                                /month
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <Progress
+                                        value={35}
+                                        className="h-1.5 bg-gray-100"
+                                        indicatorClassName="bg-green-500"
+                                    />
+                                    <p className="text-xs text-gray-500 mt-1">
+                                        35% of income
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-4 pt-4 border-t border-gray-100">
+                                <button
+                                    className="text-sm text-purple-700 font-medium hover:text-purple-800 flex items-center"
+                                    onClick={() =>
+                                        setShowAIAssistant(
+                                            true
+                                        )
+                                    }
+                                >
+                                    <span>
+                                        Get personalized
+                                        financial advice
+                                    </span>
+                                    <ArrowRight className="h-4 w-4 ml-1" />
+                                </button>
+                            </div>
+                        </CardContent>
+                    </Card>
                 </section>
 
                 {/* AI-Powered Insights */}
